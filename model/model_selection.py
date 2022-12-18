@@ -42,20 +42,30 @@ extra_decision_tree = ExtraTreeClassifier(class_weight='balanced')
 
 
 
-rf = RandomForestRegressor(random_state=0)
-rf_pipeline = make_pipeline(decision_tree_data_preprocess, rf)
+#rf = RandomForestRegressor(random_state=0)
+#rf_pipeline = make_pipeline(decision_tree_data_preprocess, rf)
 
 
 svc_rbf_pipeline = pipeline.build_model_pipeline(model=svc_rbf)
+svc_linear_pipeline = pipeline.build_model_pipeline(model=svc_linear)
+svc_poly_pipeline = pipeline.build_model_pipeline(model=svc_poly)
+rfc_pipeline = pipeline.build_model_pipeline(model=rfc)
+decision_tree_pipeline = pipeline.build_model_pipeline(model=decision_tree)
+extra_decision_tree_pipeline = pipeline.build_model_pipeline(model=extra_decision_tree)
 
 
 
-
-all_models = [("Extra decision tree", extra_decision_tree),
-              ("Decision tree", decision_tree),
-              ("Radom forest classifier", rfc),
-              ("SVC poly", svc_poly),
-              ("SVC linear", svc_linear),
-              ("SVC rbf", svc_rbf)
+all_models = [("Extra decision tree", extra_decision_tree_pipeline),
+              ("Decision tree", decision_tree_pipeline),
+              ("Radom forest classifier", rfc_pipeline),
+              ("SVC poly", svc_poly_pipeline),
+              ("SVC linear", svc_linear_pipeline),
+              ("SVC rbf", svc_rbf_pipeline)
               ]
+
+
+
+
+
+
 
