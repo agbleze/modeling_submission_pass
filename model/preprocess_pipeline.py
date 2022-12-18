@@ -34,8 +34,8 @@ class PipelineBuilder(object):
     
     @classmethod
     def build_data_preprocess_pipeline(cls):
-        cls.preprocess_pipeline =  make_column_transformer((scaler, self.num_features),
-                                                        (one, self.categorical_features)
+        cls.preprocess_pipeline =  make_column_transformer((scaler, cls.num_features),
+                                                        (one, cls.categorical_features)
                                                       )
         
         return cls.preprocess_pipeline
