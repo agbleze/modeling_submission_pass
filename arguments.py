@@ -13,6 +13,9 @@ args = Namespace(
                   'work_rate', 'test_variable_transform'],
     selected_predictors = ['progress_percent', 'extra_time_min', 'work_rate',
                         ],
-    selected_numeric_features = ['progress_percent', 'extra_time_min']
+    selected_numeric_features = ['progress_percent', 'extra_time_min'],
+    not_passed = ['waiting_for_review', 'almost_there', 
+                  'not_yet', 'a_little_more'],
+
 
 )
