@@ -11,19 +11,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-
-
 one = OneHotEncoder(handle_unknown='ignore')
 scaler = StandardScaler()
-
-# preprocess_pipeline =  make_column_transformer((scaler, args.selected_numeric_features),
-#                                                 (one, args.categorical_features)
-#                                                 )
-
-# logit_model_pipeline = make_pipeline(preprocess_pipeline,
-#                                     LogisticRegression(class_weight='balanced')
-#                                     )
-
 
 class PipelineBuilder(object):
     def __init__(self, num_features: list = args.selected_numeric_features,
@@ -60,7 +49,3 @@ class PipelineBuilder(object):
             
         return logit_model_pipeline
         
-
-
-
-# %%
