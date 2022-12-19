@@ -1,4 +1,3 @@
-
 #%%
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
@@ -77,8 +76,8 @@ class Model(object):
         return model_report
     
     
-    def save_model(self):
-        dump(value=self.model_fitted, filename='model.model')
+    def save_model(self, filename = args.model_store_path):
+        dump(value=self.model_fitted, filename=filename)
         print('model successfully saved')
         
         
@@ -144,8 +143,3 @@ class Model(object):
                 }
         
 
-
-
-
-
-# %%
