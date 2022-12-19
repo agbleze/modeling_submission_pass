@@ -4,7 +4,6 @@ import os
 import scipy.stats as stats
 
 
-
 def get_data_from_numbers_file(data_filepath: str, tab: int):
     doc = Document(data_filepath)
     sheets = doc.sheets
