@@ -1,10 +1,10 @@
-# import all models required for the analysis
-from ..arguments import args
+#%% import all models required for the analysis
+from arguments import args
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 import pandas as pd
 import numpy as np
-from argparse import Namespace
+#from argparse import Namespace
 from sklearn.compose import make_column_transformer
 from sklearn.pipeline import make_pipeline
 import matplotlib.pyplot as plt
@@ -34,8 +34,8 @@ class PipelineBuilder(object):
     
     @classmethod
     def build_data_preprocess_pipeline(cls):
-        cls.preprocess_pipeline =  make_column_transformer((scaler, cls.num_features),
-                                                        (one, cls.categorical_features)
+        cls.preprocess_pipeline =  make_column_transformer((scaler, args.selected_numeric_features),
+                                                        (one, args.categorical_features)
                                                       )
         
         return cls.preprocess_pipeline
@@ -62,3 +62,5 @@ class PipelineBuilder(object):
         
 
 
+
+# %%
