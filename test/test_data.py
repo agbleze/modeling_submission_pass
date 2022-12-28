@@ -13,3 +13,7 @@ def test_target_variable_available():
 def test_target_variable_is_binary():
     pass
     
+    
+    
+def test_predictor_variables_available():
+    pass
