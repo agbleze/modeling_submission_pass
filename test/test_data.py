@@ -26,3 +26,7 @@ def test_target_variable_is_binary():
     
 def test_predictor_variables_available():
     pass
+
+
+def test_predict_pass_status():
+    pass
