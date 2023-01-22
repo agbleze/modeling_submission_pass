@@ -8,6 +8,8 @@ def model():
 
 ##
 
+def test_split_data():
+    pass
 
 
 
