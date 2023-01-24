@@ -30,3 +30,9 @@ def test_predictor_variables_available():
 
 def test_predict_pass_status():
     pass
+
+
+def test_load_model():
+    pass
+
+
