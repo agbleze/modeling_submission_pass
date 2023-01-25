@@ -36,3 +36,5 @@ def test_load_model():
     pass
 
 
+def test_candidate_model()
+
