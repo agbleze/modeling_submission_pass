@@ -25,7 +25,7 @@ def data_transformer():
 
 
 @pytest.fixture()
-def transformed_hours_to_minute_data():
+def transformed_hours_to_minute_data(data_transformer):
     data_transformed = data_transformer.convert_hours_to_minute()
     return data_transformed
     
@@ -52,8 +52,12 @@ def model():
     # Test define work rate column for values slow, normal, fast
     
     
-def test_work_rate_column_available():
-    pass
+def test_work_rate_column_available(data_transformer,
+                                    transformed_hours_to_minute_data
+                                    ):
+    work_rate_df = data_transformer.define_work_rate(data_to_transform=transformed_hours_to_minute_data
+                                      )
+    assert('work_rate' in work_rate_df.columns) 
 
 
 def test_work_rate_values():
