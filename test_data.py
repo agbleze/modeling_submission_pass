@@ -47,6 +47,7 @@ def model():
 
 @pytest.fixture()
 def work_rate_df():
+    pass
     
 
 #TODO:
