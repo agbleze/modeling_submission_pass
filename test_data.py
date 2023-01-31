@@ -45,7 +45,9 @@ def model():
     pass
 
 
-##
+@pytest.fixture()
+def work_rate_df():
+    
 
 #TODO:
     # TEST define work rate for work rate column
