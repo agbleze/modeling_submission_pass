@@ -46,8 +46,12 @@ def model():
 
 
 @pytest.fixture()
-def work_rate_df():
-    pass
+def work_rate_df(data_transformer,
+                transformed_hours_to_minute_data
+                ):
+    work_rate_df = data_transformer.define_work_rate(data_to_transform=transformed_hours_to_minute_data
+                                      )
+    return work_rate_df
     
 
 #TODO:
