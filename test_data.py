@@ -63,8 +63,8 @@ def test_work_rate_column_available(work_rate_df):
     assert('work_rate' in work_rate_df.columns) 
 
 
-def test_work_rate_values():
-    pass
+def test_work_rate_values(work_rate_df):
+    assert(['slow', 'normal', 'fast' in work_rate_df['work_rate'].values])
 
 
 
