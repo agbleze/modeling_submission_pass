@@ -7,6 +7,7 @@ train_test_data = namedtuple(typename='train_test_data',
                                           'y_train','y_test'
                                           ]
                              )
+
 def split_data(data: pd.DataFrame, 
                features: list, 
                target: str, 
@@ -26,6 +27,4 @@ def split_data(data: pd.DataFrame,
                            y_test=y_test
                            )
 
-    
-        
     
