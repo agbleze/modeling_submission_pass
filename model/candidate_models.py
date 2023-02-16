@@ -1,9 +1,10 @@
 from xgboost import XGBRFClassifier, XGBClassifier
 from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import (RandomForestClassifier, AdaBoostClassifier,
                               GradientBoostingClassifier, BaggingClassifier, 
                               HistGradientBoostingClassifier,ExtraTreesClassifier,
-                              VotingClassifier,
+                              VotingClassifier, 
                               )
 #from sklearn.neighbors import KNeighborsClassifier
 from .preprocess_pipeline import PipelineBuilder
@@ -20,6 +21,8 @@ pipeline = PipelineBuilder()
 
 preprocess_pipeline = pipeline.build_data_preprocess_pipeline()
 
+logit = LogisticRegression(class_weight='balanced')
+
 svc_rbf = SVC(kernel='rbf', class_weight='balanced')
 svc_linear = SVC(kernel='linear', class_weight='balanced')
 svc_poly = SVC(kernel='poly', class_weight='balanced')
@@ -27,6 +30,8 @@ rfc = RandomForestClassifier(class_weight='balanced')
 
 decision_tree = DecisionTreeClassifier(class_weight='balanced')
 extra_decision_tree = ExtraTreeClassifier(class_weight='balanced')
+
+logit_pipeline = pipeline.build_model_pipeline(model=logit)
 svc_rbf_pipeline = pipeline.build_model_pipeline(model=svc_rbf)
 svc_linear_pipeline = pipeline.build_model_pipeline(model=svc_linear)
 svc_poly_pipeline = pipeline.build_model_pipeline(model=svc_poly)
@@ -39,7 +44,8 @@ candidate_classifiers = [("Extra decision tree", extra_decision_tree_pipeline),
                         ("Radom forest classifier", rfc_pipeline),
                         ("SVC poly", svc_poly_pipeline),
                         ("SVC linear", svc_linear_pipeline),
-                        ("SVC rbf", svc_rbf_pipeline)
+                        ("SVC rbf", svc_rbf_pipeline),
+                        ("Logistic regression", logit_pipeline)
                         ]
 
 
