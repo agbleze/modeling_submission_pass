@@ -90,7 +90,7 @@ classifiers_plot['boxplot_classifiers_test_score']
 classifiers_plot['boxplot_classifiers_fit_time']
 
 #%%
-classifiers_plot['bpxplot_classifiers_score_time']
+classifiers_plot['boxplot_classifiers_score_time']
 
 
 
