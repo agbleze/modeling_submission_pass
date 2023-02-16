@@ -18,7 +18,8 @@ pipeline = PipelineBuilder()
 model_pipeline = pipeline.build_model_pipeline()
 
 class Model(object):
-    def __init__(self, training_features: pd.DataFrame, training_target_variable: pd.DataFrame,
+    def __init__(self, training_features: pd.DataFrame, 
+                 training_target_variable: pd.DataFrame,
                  test_features: pd.DataFrame = None, test_target_variable: pd.DataFrame = None,
                  metric: str = 'accuracy', cv: int = 10
                  ):
@@ -139,7 +140,7 @@ class Model(object):
         
         return {'boxplot_classifiers_test_score': test_score_fig, 
                 'boxplot_classifiers_fit_time': fit_time_fig,
-                'bpxplot_classifiers_score_time': score_time_fig
+                'boxplot_classifiers_score_time': score_time_fig
                 }
         
 
