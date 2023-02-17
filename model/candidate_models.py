@@ -48,4 +48,12 @@ candidate_classifiers = [("Extra decision tree", extra_decision_tree_pipeline),
                         ("Logistic regression", logit_pipeline)
                         ]
 
+# TODO:
+#1. Add function to return best classifier
+#2. Add function to save best classifier
+#3. Add function to bag best classifier
+#4. Add function to boost best classifier
+#5. Add function to plot residual plots for candidate models
+
+
 
