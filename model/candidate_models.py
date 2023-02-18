@@ -1,3 +1,5 @@
+#%%
+
 from xgboost import XGBRFClassifier, XGBClassifier
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
@@ -39,14 +41,14 @@ rfc_pipeline = pipeline.build_model_pipeline(model=rfc)
 decision_tree_pipeline = pipeline.build_model_pipeline(model=decision_tree)
 extra_decision_tree_pipeline = pipeline.build_model_pipeline(model=extra_decision_tree)
 
-candidate_classifiers = [("Extra decision tree", extra_decision_tree_pipeline),
-                        ("Decision tree", decision_tree_pipeline),
-                        ("Radom forest classifier", rfc_pipeline),
-                        ("SVC poly", svc_poly_pipeline),
-                        ("SVC linear", svc_linear_pipeline),
-                        ("SVC rbf", svc_rbf_pipeline),
-                        ("Logistic regression", logit_pipeline)
-                        ]
+candidate_classifiers = {"Extra decision tree": extra_decision_tree_pipeline,
+                        "Decision tree": decision_tree_pipeline,
+                        "Radom forest classifier": rfc_pipeline,
+                        "SVC poly": svc_poly_pipeline,
+                        "SVC linear": svc_linear_pipeline,
+                        "SVC rbf": svc_rbf_pipeline,
+                        "Logistic regression": logit_pipeline
+                        }
 
 # TODO:
 #1. Add function to return best classifier
@@ -57,3 +59,5 @@ candidate_classifiers = [("Extra decision tree", extra_decision_tree_pipeline),
 
 
 
+
+# %%
