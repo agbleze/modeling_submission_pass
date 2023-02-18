@@ -82,13 +82,13 @@ class Model(object):
         print('model successfully saved')
         
         
-    def run_classifiers(self, estimators: List[Tuple] = candidate_classifiers
+    def run_classifiers(self, estimators: dict = candidate_classifiers
                         ):
         df_test_score_list = []
         df_fit_time_list = []
         df_score_time_list = []
         
-        for model_name, mod_pipeline in estimators:              
+        for model_name, mod_pipeline in estimators.items():              
             score = cross_validate(estimator=mod_pipeline,
                                      X=self.training_features,
                                      y=self.training_target_variable, 
@@ -143,4 +143,38 @@ class Model(object):
                 'boxplot_classifiers_score_time': score_time_fig
                 }
         
+    def get_best_model_name(self, models_fit_df, colname_for_models: str = 'model', 
+                   colname_for_score: str = 'test_score') -> str:
+            """Accepts data for models and test score and returns the name of best model detected after cross validation made from running 
+                from running all candidate models
 
+            Args:
+                models_fit_df (pd.DataFrame): Dataframe with columns for model name and test score
+                colname_for_models (str): Name of column with values as model names
+                colname_for_score (str): Name of column with values as test score (accuracy)
+                
+            Returns: 
+                The name of the best algorithm (model)
+            """
+            if models_fit_df is not None:
+                self.model_cv_acc_df = models_fit_df
+            self.model_cv_acc_df = self.cv_test_score_df
+            self.model_mean_cv_acc_df = (self.model_cv_acc_df.groupby(colname_for_models)
+                                         [colname_for_score]
+                                         .mean().reset_index()
+                                         )
+            max_acc = self.model_mean_cv_acc_df[colname_for_score].max()
+            best_model_name = (self.model_mean_cv_acc_df[model_mean_cv_acc_df[colname_for_score]==max_acc]
+                               [colname_for_models].item()
+                               )
+            return best_model_name
+
+            
+
+
+            
+                
+        
+
+
+  
