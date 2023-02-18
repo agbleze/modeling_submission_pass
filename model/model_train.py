@@ -172,8 +172,8 @@ class Model(object):
                                )
             return best_model_name
 
-    #@property
-    def fit_best_candidate_model(self, candidate_models = candidate_classifiers):
+    @property
+    def best_model_fitted(self, candidate_models = candidate_classifiers):
         """Retrieves best candidate model pipeline and fit on data
         
         Returns:
@@ -183,8 +183,10 @@ class Model(object):
         best_model_name = self.get_best_model_name()
         
         best_model_pipeline = candidate_models[best_model_name]
-        self.best_model_fitted = self.model_fit(model_pipeline=best_model_pipeline)
-        return self.best_model_fitted
+        print("best candidate model being fit on data")
+        _best_model_fitted = self.model_fit(model_pipeline=best_model_pipeline)
+        print("model fitting completed")
+        return _best_model_fitted
     
     def save_best_model(self):
         self.save_model(model=self.best_model_fitted, 
