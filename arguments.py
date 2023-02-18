@@ -17,5 +17,6 @@ args = Namespace(
     not_passed = ['waiting_for_review', 'almost_there', 
                   'not_yet', 'a_little_more'],
     model_store_path = 'model_store/model.model',
+    best_model_store_path = 'model_store/best_model.model'
 
 )
