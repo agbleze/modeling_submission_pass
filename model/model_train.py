@@ -77,8 +77,11 @@ class Model(object):
         return model_report
     
     
-    def save_model(self, filename = args.model_store_path):
-        dump(value=self.model_fitted, filename=filename)
+    def save_model(self, model = None, filename = args.model_store_path):
+        if model is not None:
+            model_to_save = model
+        model_to_save = self.model_fitted
+        dump(value=model_to_save, filename=filename)
         print('model successfully saved')
         
         
@@ -143,7 +146,7 @@ class Model(object):
                 'boxplot_classifiers_score_time': score_time_fig
                 }
         
-    def get_best_model_name(self, models_fit_df, colname_for_models: str = 'model', 
+    def get_best_model_name(self, models_fit_df = None, colname_for_models: str = 'model', 
                    colname_for_score: str = 'test_score') -> str:
             """Accepts data for models and test score and returns the name of best model detected after cross validation made from running 
                 from running all candidate models
@@ -164,12 +167,29 @@ class Model(object):
                                          .mean().reset_index()
                                          )
             max_acc = self.model_mean_cv_acc_df[colname_for_score].max()
-            best_model_name = (self.model_mean_cv_acc_df[model_mean_cv_acc_df[colname_for_score]==max_acc]
+            best_model_name = (self.model_mean_cv_acc_df[self.model_mean_cv_acc_df[colname_for_score]==max_acc]
                                [colname_for_models].item()
                                )
             return best_model_name
 
-            
+    #@property
+    def fit_best_candidate_model(self, candidate_models = candidate_classifiers):
+        """Retrieves best candidate model pipeline and fit on data
+        
+        Returns:
+            Model pipeline
+
+        """
+        best_model_name = self.get_best_model_name()
+        
+        best_model_pipeline = candidate_models[best_model_name]
+        self.best_model_fitted = self.model_fit(model_pipeline=best_model_pipeline)
+        return self.best_model_fitted
+    
+    def save_best_model(self):
+        self.save_model(model=self.best_model_fitted, 
+                        filename=args.best_model_store_path
+                        )
 
 
             
