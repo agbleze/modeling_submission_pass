@@ -25,9 +25,9 @@ preprocess_pipeline = pipeline.build_data_preprocess_pipeline()
 
 logit = LogisticRegression(class_weight='balanced')
 
-svc_rbf = SVC(kernel='rbf', class_weight='balanced')
-svc_linear = SVC(kernel='linear', class_weight='balanced')
-svc_poly = SVC(kernel='poly', class_weight='balanced')
+svc_rbf = SVC(kernel='rbf', class_weight='balanced', probability=True)
+svc_linear = SVC(kernel='linear', class_weight='balanced', probability=True)
+svc_poly = SVC(kernel='poly', class_weight='balanced', probability=True)
 rfc = RandomForestClassifier(class_weight='balanced')
 
 decision_tree = DecisionTreeClassifier(class_weight='balanced')
@@ -51,8 +51,8 @@ candidate_classifiers = {"Extra decision tree": extra_decision_tree_pipeline,
                         }
 
 # TODO:
-#1. Add function to return best classifier
-#2. Add function to save best classifier
+#1. Add function to return best classifier -- done
+#2. Add function to save best classifier  -- done
 #3. Add function to bag best classifier
 #4. Add function to boost best classifier
 #5. Add function to plot residual plots for candidate models
