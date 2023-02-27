@@ -13,6 +13,7 @@ import plotly.express as px
 
 
 
+
 pipeline = PipelineBuilder()
 
 model_pipeline = pipeline.build_model_pipeline()
@@ -60,7 +61,8 @@ class Model(object):
         return self.predictions
     
     #@property
-    def evaluate_model(self, y_true = None, y_pred = None):
+    def evaluate_model(self, y_true = None, y_pred = None,
+                       output_dict=True):
         if y_true is None:
             y_true = self.test_target_variable
         else:
@@ -71,10 +73,11 @@ class Model(object):
         else:
             y_pred = y_pred
         
-        model_report = classification_report(y_true=y_true, 
-                                             y_pred=y_pred
-                                             )
-        return model_report
+        self.model_report = classification_report(y_true=y_true, 
+                                                    y_pred=y_pred,
+                                                    output_dict=output_dict
+                                                    )
+        return self.model_report
     
     
     def save_model(self, model = None, filename = args.model_store_path):
